@@ -11,11 +11,11 @@ In order to make sure the strip generation output has no repeating tickets, this
 - Each ticket column consists of one, two or three numbers and never three blanks.
 
 Example ticket layout:
-+--------------------------+
-| x| x|  | x| x| x|  |  |  |
-|  | x| x| x| x| x|  |  |  |
-|  | x|  | x|  |  | x| x| x|
-+--------------------------+
+  +--------------------------+
+  | x| x|  | x| x| x|  |  |  |
+  |  | x| x| x| x| x|  |  |  |
+  |  | x|  | x|  |  | x| x| x|
+  +--------------------------+
 
 #### Algorithm:
 
