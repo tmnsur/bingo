@@ -1,5 +1,4 @@
 package taner.bingo;
-
 import java.util.List;
 
 import taner.bingo.domain.StripGenerator;
@@ -47,6 +46,8 @@ public class GenerateStrips {
       totalRuns = DEFAULT_TOTAL_RUNS;
     }
 
+    long start = System.currentTimeMillis();
+    long elapsed = 0L;
     for (int run = 0; run < totalRuns; ++run) {
       // When generating tickets in bulk, validTicketLayouts may also be pre-generated and read through a file.
       StripGenerator stripGenerator = new StripGenerator(TicketLayoutGenerator.generate());
@@ -54,11 +55,17 @@ public class GenerateStrips {
       // Since we generate strips with unique tickets, we have to keep this number low or we may run out of tickets
       List<int[][][]> stripList = stripGenerator.generate(DEFAULT_GENERATED_STRIP_COUNT_IN_EACH_RUN);
 
+      elapsed += System.currentTimeMillis() - start;
+
       for (int[][][] strip : stripList) {
         printStrip(strip);
 
         System.out.println();
       }
+
+      start = System.currentTimeMillis();
     }
+
+    System.out.println(DEFAULT_GENERATED_STRIP_COUNT_IN_EACH_RUN * totalRuns + " strips generated in: " + elapsed + "ms");
   }
 }
